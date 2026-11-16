@@ -102,7 +102,7 @@ pub fn read_lotus(bytes: &[u8]) -> Result<(Workbook, ReadReport), IoError> {
             ));
         }
         // Quattro Pro for Windows 7 and later (.qpw, .wb3) keep the notebook in a compound file.
-        None if bytes.starts_with(&crate::cfb::SIGNATURE) => {
+        None if bytes.starts_with(&craft_cfb::SIGNATURE) => {
             return Err(IoError::Format(
                 "this is a Quattro Pro for Windows notebook (.qpw, .wb3), which GridCraft can't read. Save it from Quattro Pro as \
                  .xlsx, or as a Quattro Pro for DOS (.wq1) or Lotus 1-2-3 (.wk1) worksheet, and try again."

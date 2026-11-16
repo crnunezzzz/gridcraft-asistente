@@ -222,7 +222,7 @@ impl<'a> Parser<'a> {
                 Event::GeneralRef(r) => {
                     let ch = match r.resolve_char_ref().map_err(xml_error)? {
                         Some(c) => c,
-                        None => match r.as_ref() {
+                        None => match &*r {
                             b"amp" => '&',
                             b"lt" => '<',
                             b"gt" => '>',
